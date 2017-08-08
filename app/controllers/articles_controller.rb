@@ -27,6 +27,22 @@ def show
 @article = Article.find(params[:id])
 end
 
+def edit
+@article = Article.find(params[:id])
+end
+
+def update
+@article = Article.find(params[:id]) 
+if @article.update(article_params)
+flash[:success] = "Article has been updated"
+# redirect to show article 
+redirect_to @article 
+else
+flash.now[:danger] = "Article has not been updated"
+render :edit
+end
+end
+
  # override method from application controller which handle the not found exception
 protected
 def resource_not_found

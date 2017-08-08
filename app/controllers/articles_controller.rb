@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
+	
 # set_article would be used only in show edit update destroy actions
 before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+#before_action :authenticate_user!, except: [:index, :show]
   def index
  @articles = Article.all
   end

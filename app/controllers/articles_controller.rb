@@ -23,6 +23,10 @@ else
 end
 end
 
+def show
+@article = Article.find(params[:id])
+end
+
 # article_params is passed to new as it list info of article that is taken from the web while permiting title and body only
 private
 def article_params

@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+# set_article would be used only in show edit update destroy actions
+before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def index
  @articles = Article.all
   end
@@ -24,15 +27,15 @@ end
 end
 
 def show
-@article = Article.find(params[:id])
+
 end
 
 def edit
-@article = Article.find(params[:id])
+
 end
 
 def update
-@article = Article.find(params[:id]) 
+
 if @article.update(article_params)
 flash[:success] = "Article has been updated"
 # redirect to show article 
@@ -44,7 +47,7 @@ end
 end
 
 def destroy
-@article = Article.find(params[:id]) 
+
 if @article.destroy
 flash[:success] = "Article has been deleted."
 redirect_to articles_path 
@@ -62,6 +65,12 @@ end
 
 # article_params is passed to new as it list info of article that is taken from the web while permiting title and body only
 private
+
+def set_article
+@article = Article.find(params[:id])
+end
+
+
 def article_params
 params.require(:article).permit(:title, :body) 
 end

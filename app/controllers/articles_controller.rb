@@ -27,6 +27,14 @@ def show
 @article = Article.find(params[:id])
 end
 
+ # override method from application controller which handle the not found exception
+protected
+def resource_not_found
+message = "The article you are looking for could not be found" 
+flash[:alert] = message
+redirect_to root_path
+end
+
 # article_params is passed to new as it list info of article that is taken from the web while permiting title and body only
 private
 def article_params

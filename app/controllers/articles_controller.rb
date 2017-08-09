@@ -12,7 +12,8 @@ before_action :set_article, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-@article = Article.new(article_params) 
+@article = Article.new(article_params)
+@article.user = current_user 
 if @article.save
 # flash is a hash with key success it should be viewed so we write a view in appliction.erb view body
 #flash would be shown after the page is redirected to article path 

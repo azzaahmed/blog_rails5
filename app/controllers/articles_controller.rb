@@ -29,7 +29,10 @@ end
 end
 
 def show
-
+	# @comment as comment controller create ction redircts to show article view which check if the comment has any errors
+	# @comments as we need it to retrieve all comments and display it 
+@comment = @article.comments.build
+@comments = @article.comments
 end
 
 def edit

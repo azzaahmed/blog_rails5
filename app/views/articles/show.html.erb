@@ -25,7 +25,7 @@ data: { confirm: "Are you sure you want to delete article?" }, class: "btn btn-p
 
 <div class='col-md-12'>
 <!-- @article, @comment ] as i want the url path to be article/id/comments/id , don't forget to modify the route file (resources resources) as we have here a nested route  -->
-<%= form_for [@article, @comment ], 
+<%= form_for [@article, @comment ],  remote: true,
 :html => {class: "form-horizontal", role: "form"} do |f| %>
 <% if @comment.errors.any? %>
 <div class="panel panel-danger col-md-offset-1">
@@ -66,6 +66,8 @@ prohibited this comment from being saved:
 </header>
 <div class="col-md-10">
 <% if @article.comments.any? %>
+<!-- lazm id messages 3lshan al messages.coffee file byb3at data bel id dah  -->
+ <div id="messages">
 <!-- presisted_comments is called from the ArticleHelper file to retrieve only the saved comments found in the database-->
 <% persisted_comments(@comments).each do |comment| %> 
 <div class="comment-body">
@@ -77,6 +79,7 @@ ago by <%= comment.user.email %>
 </div>
 <hr>
 <% end %>
+</div>
 <% else %>
 There are no comments to show.
 <% end %> 
